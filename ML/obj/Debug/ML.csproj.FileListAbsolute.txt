@@ -1,0 +1,6 @@
+C:\Users\julio\source\repos\Libros\ML\bin\Debug\ML.dll
+C:\Users\julio\source\repos\Libros\ML\bin\Debug\ML.pdb
+C:\Users\julio\source\repos\Libros\ML\obj\Debug\ML.csprojAssemblyReference.cache
+C:\Users\julio\source\repos\Libros\ML\obj\Debug\ML.csproj.CoreCompileInputs.cache
+C:\Users\julio\source\repos\Libros\ML\obj\Debug\ML.dll
+C:\Users\julio\source\repos\Libros\ML\obj\Debug\ML.pdb

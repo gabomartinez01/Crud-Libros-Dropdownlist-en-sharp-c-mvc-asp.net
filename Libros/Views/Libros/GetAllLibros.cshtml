@@ -1,0 +1,76 @@
+﻿@model ML.Libros
+@{
+    ViewBag.Title = "GetAllLibros";
+}
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="http://bootboxjs.com/bootbox.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<h2>GetAllLibros</h2>
+
+<div class="container">
+    <div class="d-flex dl-horizontal">
+        <div class="form-group form-inline" style="display:flex; justify-content:space-between;">
+            <a class="btn btn-success glyphicon glyphicon-asterisk" href="@Url.Action("Form", "Libros")">+</a>
+
+            <div>
+                Ajax
+                <label>Ingresa Nombre Libro</label>
+                <input id="txBusqueda" type="text" class="form-control" placeholder="Buscar" />
+            </div>
+           
+        </div>
+    </div>
+
+    <h3></h3>
+    <table class="table table-hover table-condensed table-responsive">
+        <thead class="text-center">
+            <tr>
+                <td>IdLibro</td>
+                <td>Nombre Libro</td>
+                <td>Biblioteca</td>
+                <td>Edit | Delet </td>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            @foreach (ML.Libros libros in Model.LibrosList)
+            {
+                <tr>
+                    <td>@libros.IdLibro</td>
+                    <td>@libros.Nombre</td>
+                    <td>@libros.Biblioteca.Nombre</td>
+                    <td><a class="btn btn-warning glyphicon glyphicon-edit" href="@Url.Action("Form", "Libros", new { IdLibro = libros.IdLibro })"></a></td>
+                    <td><a class="btn btn-danger glyphicon glyphicon-trash" href="@Url.Action("Delete", "Libros", new { IdLibro = libros.IdLibro })"></a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<script>
+
+    $(document).on("blur", "#txBusqueda", function () {
+        var id = document.querySelector("#txBusqueda").value;
+
+        
+
+        $.ajax({
+            url: "GetAllLibros",
+            method: "POST",
+            data: { text: id },
+            success: function (retorno) {
+                //#contenido se encuentra en layout en body ya que refresca todo
+                /*</head>
+                  <body id="contenido">*/
+                $("#contenido").html(retorno);
+                $('td').highlight($("#txBusqueda").val());
+                $('h3').text('Se han encontrado ' + $('.highlight').length + ' coincidencias');
+            }
+        })
+    })
+
+
+</script>

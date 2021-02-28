@@ -1,0 +1,17 @@
+C:\Users\julio\source\repos\Libros\BL\bin\Debug\BL.dll.config
+C:\Users\julio\source\repos\Libros\BL\bin\Debug\BL.dll
+C:\Users\julio\source\repos\Libros\BL\bin\Debug\BL.pdb
+C:\Users\julio\source\repos\Libros\BL\bin\Debug\DL.dll
+C:\Users\julio\source\repos\Libros\BL\bin\Debug\EntityFramework.dll
+C:\Users\julio\source\repos\Libros\BL\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\julio\source\repos\Libros\BL\bin\Debug\ML.dll
+C:\Users\julio\source\repos\Libros\BL\bin\Debug\DL.pdb
+C:\Users\julio\source\repos\Libros\BL\bin\Debug\DL.dll.config
+C:\Users\julio\source\repos\Libros\BL\bin\Debug\ML.pdb
+C:\Users\julio\source\repos\Libros\BL\bin\Debug\EntityFramework.xml
+C:\Users\julio\source\repos\Libros\BL\bin\Debug\EntityFramework.SqlServer.xml
+C:\Users\julio\source\repos\Libros\BL\obj\Debug\BL.csprojAssemblyReference.cache
+C:\Users\julio\source\repos\Libros\BL\obj\Debug\BL.csproj.CoreCompileInputs.cache
+C:\Users\julio\source\repos\Libros\BL\obj\Debug\BL.csproj.CopyComplete
+C:\Users\julio\source\repos\Libros\BL\obj\Debug\BL.dll
+C:\Users\julio\source\repos\Libros\BL\obj\Debug\BL.pdb

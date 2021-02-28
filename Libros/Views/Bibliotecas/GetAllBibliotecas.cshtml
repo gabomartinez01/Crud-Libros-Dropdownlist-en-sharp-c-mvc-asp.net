@@ -1,0 +1,57 @@
+﻿@model ML.Biblioteca
+@{
+    ViewBag.Title = "GetAllBibliotecas";
+}
+
+<h2>GetAllBibliotecas</h2>
+
+
+<div class="container"
+
+    <div class="form-inline">
+        <div style="display:flex; justify-content:space-between; margin-bottom:2rem;">
+            <a class="btn btn-success glyphicon glyphicon-pencil">+</a>
+            @using (Html.BeginForm("GetAllBibliotecas", "Bibliotecas", FormMethod.Post))
+            {
+            <div style="display:flex; justify-content:space-between;">
+                JS onclick
+                @Html.TextBoxFor(model => model.IdBiblioteca, new{@class="form-control", @placeholder="IdBiblioteca"})
+                <button type="submit" class="btn btn-info glyphicon glyphicon-search" style="margin-left: 1rem;"></button>
+            </div>
+            }
+        </div>
+    </div>
+    
+    <table class="table table-bordered table-hover table-responsive" id="contenido">
+        <thead class="text-center">
+            <tr>
+                <td>Id</td>
+                <td>Nombre</td>
+            </tr>
+        </thead>
+        <tbody class="text-center">
+            @foreach(ML.Biblioteca biblioteca in Model.BibliotecasList)
+            {
+            <tr>
+                <td>@biblioteca.IdBiblioteca</td>
+                <td>@biblioteca.Nombre</td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<script src="~/Scripts/bootstrap.min.js"></script>
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+<script src="http://bootboxjs.com/bootbox.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+<script>
+    $( document ).ready(function() {
+        let id = document.querySelector("#IdBiblioteca").value = "";
+        document.getElementById("#IdBiblioteca").focus();
+    });
+</script>

@@ -1,0 +1,234 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="LibreriaModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Biblioteca">
+          <Key>
+            <PropertyRef Name="IdBiblioteca" />
+          </Key>
+          <Property Name="IdBiblioteca" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="Libros">
+          <Key>
+            <PropertyRef Name="IdLibro" />
+          </Key>
+          <Property Name="IdLibro" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="IdBiblioteca" Type="int" />
+        </EntityType>
+        <Association Name="FK__Libros__IdBiblio__267ABA7A">
+          <End Role="Biblioteca" Type="Self.Biblioteca" Multiplicity="0..1" />
+          <End Role="Libros" Type="Self.Libros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biblioteca">
+              <PropertyRef Name="IdBiblioteca" />
+            </Principal>
+            <Dependent Role="Libros">
+              <PropertyRef Name="IdBiblioteca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="AddBiblioteca" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="AddLibro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="IdBiblioteca" Type="int" Mode="In" />
+        </Function>
+        <Function Name="DeleteLibro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="IdLibro" Type="int" Mode="In" />
+        </Function>
+        <Function Name="GetBibliotecas" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="GetBusquedaAbierda" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+        </Function>
+        <Function Name="GetLibros" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" />
+        <Function Name="UpdateLibro" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="Nombre" Type="varchar" Mode="In" />
+          <Parameter Name="IdBiblioteca" Type="int" Mode="In" />
+          <Parameter Name="IdLibro" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="LibreriaModelStoreContainer">
+          <EntitySet Name="Biblioteca" EntityType="Self.Biblioteca" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Libros" EntityType="Self.Libros" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Libros__IdBiblio__267ABA7A" Association="Self.FK__Libros__IdBiblio__267ABA7A">
+            <End Role="Biblioteca" EntitySet="Biblioteca" />
+            <End Role="Libros" EntitySet="Libros" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="LibreriaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Biblioteca">
+          <Key>
+            <PropertyRef Name="IdBiblioteca" />
+          </Key>
+          <Property Name="IdBiblioteca" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Libros" Relationship="Self.FK__Libros__IdBiblio__267ABA7A" FromRole="Biblioteca" ToRole="Libros" />
+        </EntityType>
+        <EntityType Name="Libros">
+          <Key>
+            <PropertyRef Name="IdLibro" />
+          </Key>
+          <Property Name="IdLibro" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="IdBiblioteca" Type="Int32" />
+          <NavigationProperty Name="Biblioteca" Relationship="Self.FK__Libros__IdBiblio__267ABA7A" FromRole="Libros" ToRole="Biblioteca" />
+        </EntityType>
+        <Association Name="FK__Libros__IdBiblio__267ABA7A">
+          <End Role="Biblioteca" Type="Self.Biblioteca" Multiplicity="0..1" />
+          <End Role="Libros" Type="Self.Libros" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Biblioteca">
+              <PropertyRef Name="IdBiblioteca" />
+            </Principal>
+            <Dependent Role="Libros">
+              <PropertyRef Name="IdBiblioteca" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="LibreriaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Biblioteca" EntityType="Self.Biblioteca" />
+          <EntitySet Name="Libros" EntityType="Self.Libros" />
+          <AssociationSet Name="FK__Libros__IdBiblio__267ABA7A" Association="Self.FK__Libros__IdBiblio__267ABA7A">
+            <End Role="Biblioteca" EntitySet="Biblioteca" />
+            <End Role="Libros" EntitySet="Libros" />
+          </AssociationSet>
+          <FunctionImport Name="GetBibliotecas" ReturnType="Collection(LibreriaModel.GetBibliotecas_Result)" />
+          <FunctionImport Name="AddBiblioteca">
+          <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="AddLibro">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="IdBiblioteca" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetLibros" ReturnType="Collection(LibreriaModel.GetLibros_Result1)" />
+          <FunctionImport Name="UpdateLibro">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+            <Parameter Name="IdBiblioteca" Mode="In" Type="Int32" />
+            <Parameter Name="IdLibro" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="DeleteLibro">
+          <Parameter Name="IdLibro" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetBusquedaAbierda" ReturnType="Collection(LibreriaModel.GetBusquedaAbierda_Result2)">
+            <Parameter Name="Nombre" Mode="In" Type="String" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GetBibliotecas_Result">
+          <Property Type="Int32" Name="IdBiblioteca" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetLibros_Result">
+          <Property Type="Int32" Name="IdLibro" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="String" Name="NombreLibro" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetLibros_Result1">
+          <Property Type="Int32" Name="IdLibro" Nullable="false" />
+          <Property Type="String" Name="NombreLibro" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IdBiblioteca" Nullable="false" />
+          <Property Type="String" Name="NombreBiblioteca" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetBusquedaAbierda_Result">
+          <Property Type="Int32" Name="IdLibro" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IdBiblioteca" Nullable="true" />
+        </ComplexType>
+        <ComplexType Name="GetBusquedaAbierda_Result1">
+          <Property Type="Int32" Name="IdLibro" Nullable="false" />
+          <Property Type="String" Name="Nombre" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IdBiblioteca" Nullable="false" />
+          <Property Type="String" Name="Nombre1" Nullable="true" MaxLength="50" />
+        </ComplexType>
+        <ComplexType Name="GetBusquedaAbierda_Result2">
+          <Property Type="Int32" Name="IdLibro" Nullable="false" />
+          <Property Type="String" Name="NombreLibro" Nullable="true" MaxLength="50" />
+          <Property Type="Int32" Name="IdBiblioteca" Nullable="false" />
+          <Property Type="String" Name="NombreBiblioteca" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="LibreriaModelStoreContainer" CdmEntityContainer="LibreriaEntities">
+          <EntitySetMapping Name="Biblioteca">
+            <EntityTypeMapping TypeName="LibreriaModel.Biblioteca">
+              <MappingFragment StoreEntitySet="Biblioteca">
+                <ScalarProperty Name="IdBiblioteca" ColumnName="IdBiblioteca" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Libros">
+            <EntityTypeMapping TypeName="LibreriaModel.Libros">
+              <MappingFragment StoreEntitySet="Libros">
+                <ScalarProperty Name="IdLibro" ColumnName="IdLibro" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="IdBiblioteca" ColumnName="IdBiblioteca" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <FunctionImportMapping FunctionImportName="GetBibliotecas" FunctionName="LibreriaModel.Store.GetBibliotecas">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LibreriaModel.GetBibliotecas_Result">
+                <ScalarProperty Name="IdBiblioteca" ColumnName="IdBiblioteca" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="AddBiblioteca" FunctionName="LibreriaModel.Store.AddBiblioteca" />
+          <FunctionImportMapping FunctionImportName="AddLibro" FunctionName="LibreriaModel.Store.AddLibro" />
+          <FunctionImportMapping FunctionImportName="GetLibros" FunctionName="LibreriaModel.Store.GetLibros">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LibreriaModel.GetLibros_Result1">
+                <ScalarProperty Name="IdLibro" ColumnName="IdLibro" />
+                <ScalarProperty Name="NombreLibro" ColumnName="NombreLibro" />
+                <ScalarProperty Name="IdBiblioteca" ColumnName="IdBiblioteca" />
+                <ScalarProperty Name="NombreBiblioteca" ColumnName="NombreBiblioteca" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="UpdateLibro" FunctionName="LibreriaModel.Store.UpdateLibro" />
+          <FunctionImportMapping FunctionImportName="DeleteLibro" FunctionName="LibreriaModel.Store.DeleteLibro" />
+          <FunctionImportMapping FunctionImportName="GetBusquedaAbierda" FunctionName="LibreriaModel.Store.GetBusquedaAbierda">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="LibreriaModel.GetBusquedaAbierda_Result2">
+                <ScalarProperty Name="IdLibro" ColumnName="IdLibro" />
+                <ScalarProperty Name="NombreLibro" ColumnName="NombreLibro" />
+                <ScalarProperty Name="IdBiblioteca" ColumnName="IdBiblioteca" />
+                <ScalarProperty Name="NombreBiblioteca" ColumnName="NombreBiblioteca" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

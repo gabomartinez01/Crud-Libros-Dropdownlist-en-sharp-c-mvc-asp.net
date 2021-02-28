@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="LibreriaModelStoreContainer" CdmEntityContainer="LibreriaEntities">
+    <EntitySetMapping Name="Biblioteca">
+      <EntityTypeMapping TypeName="LibreriaModel.Biblioteca">
+        <MappingFragment StoreEntitySet="Biblioteca">
+          <ScalarProperty Name="IdBiblioteca" ColumnName="IdBiblioteca" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Libros">
+      <EntityTypeMapping TypeName="LibreriaModel.Libros">
+        <MappingFragment StoreEntitySet="Libros">
+          <ScalarProperty Name="IdLibro" ColumnName="IdLibro" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="IdBiblioteca" ColumnName="IdBiblioteca" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <FunctionImportMapping FunctionImportName="GetBibliotecas" FunctionName="LibreriaModel.Store.GetBibliotecas">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LibreriaModel.GetBibliotecas_Result">
+          <ScalarProperty Name="IdBiblioteca" ColumnName="IdBiblioteca" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="AddBiblioteca" FunctionName="LibreriaModel.Store.AddBiblioteca" />
+    <FunctionImportMapping FunctionImportName="AddLibro" FunctionName="LibreriaModel.Store.AddLibro" />
+    <FunctionImportMapping FunctionImportName="GetLibros" FunctionName="LibreriaModel.Store.GetLibros">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LibreriaModel.GetLibros_Result1">
+          <ScalarProperty Name="IdLibro" ColumnName="IdLibro" />
+          <ScalarProperty Name="NombreLibro" ColumnName="NombreLibro" />
+          <ScalarProperty Name="IdBiblioteca" ColumnName="IdBiblioteca" />
+          <ScalarProperty Name="NombreBiblioteca" ColumnName="NombreBiblioteca" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+    <FunctionImportMapping FunctionImportName="UpdateLibro" FunctionName="LibreriaModel.Store.UpdateLibro" />
+    <FunctionImportMapping FunctionImportName="DeleteLibro" FunctionName="LibreriaModel.Store.DeleteLibro" />
+    <FunctionImportMapping FunctionImportName="GetBusquedaAbierda" FunctionName="LibreriaModel.Store.GetBusquedaAbierda">
+      <ResultMapping>
+        <ComplexTypeMapping TypeName="LibreriaModel.GetBusquedaAbierda_Result2">
+          <ScalarProperty Name="IdLibro" ColumnName="IdLibro" />
+          <ScalarProperty Name="NombreLibro" ColumnName="NombreLibro" />
+          <ScalarProperty Name="IdBiblioteca" ColumnName="IdBiblioteca" />
+          <ScalarProperty Name="NombreBiblioteca" ColumnName="NombreBiblioteca" />
+        </ComplexTypeMapping>
+      </ResultMapping>
+    </FunctionImportMapping>
+  </EntityContainerMapping>
+</Mapping>

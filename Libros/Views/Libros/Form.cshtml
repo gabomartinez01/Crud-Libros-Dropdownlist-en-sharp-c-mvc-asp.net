@@ -1,0 +1,54 @@
+﻿@model ML.Libros
+@{
+}
+
+
+<div class="container">
+    <h2>@ViewBag.Title</h2>
+    <div class="row">
+        <div class="col-md-12">
+            @using(Html.BeginForm("Form", "Libros", FormMethod.Post))
+            {
+            <div class="form-horizontal">
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.IdLibro, new { @class = "hidden" })
+                        @Html.TextBoxFor(model => model.IdLibro, new { @class = "hidden" })
+                        @Html.ValidationMessageFor(model => model.IdLibro)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.Nombre, new { @class = "text-dark" })
+                        @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(model => model.Nombre)
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        @Html.LabelFor(model => model.Biblioteca.IdBiblioteca)
+                        @if(Model.Biblioteca == null)
+                        {
+                            @Html.DropDownListFor(model => model.Biblioteca.IdBiblioteca, new SelectList(string.Empty, "Values", "Text"), "Selecciona una Biblioteca", htmlAttributes: new { IdBiblioteca = "Biblioteca", @class="form-control"})
+                        }
+                        else
+                        {
+                            @Html.DropDownListFor(model => model.Biblioteca.IdBiblioteca, new SelectList(Model.Biblioteca.BibliotecasList, "IdBiblioteca", "Nombre"), "Selecciona", new { @class="form-control"})
+                        }
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <div class="col-md-3">
+                        <input type="submit" value="Guardar" class="btn btn-success"/>
+                        @Html.ActionLink("Regresar", "GetAllLibros", "Libros", htmlAttributes: new { @class="btn btn-danger"})
+                    </div>
+                </div>
+
+            </div>
+            }
+        </div>
+    </div>
+</div>
